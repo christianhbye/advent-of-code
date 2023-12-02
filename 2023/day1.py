@@ -1,14 +1,15 @@
 with open("inputs/day1.txt") as f:
     data = f.read()
 
+
 def add_digits(data):
     total = 0
     for d in data.split("\n")[:-1]:
         digits = [s for s in d if s.isdigit()]
         add = int("".join([digits[0], digits[-1]]))
-        #print(digits, add)
         total += add
     print(total)
+
 
 # part 1
 add_digits(data)
