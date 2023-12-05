@@ -24,7 +24,7 @@ for d in data:
         if _inincnt == len(cs):
             _incnt += 1
     if _incnt == len(s):
-        total += int(ids[len("Game "):])
+        total += int(ids[len("Game ") :])
 print(total)
 
 total = 0

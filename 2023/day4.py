@@ -3,6 +3,7 @@ import re
 with open("inputs/day4.txt") as fh:
     data = fh.readlines()
 
+
 def g(line):
     la, lb = line.split(":")
     l1, l2 = lb.split("|")
@@ -10,9 +11,10 @@ def g(line):
     mine = [i for i in re.findall(r"(\d+)", l2) if i in wns]
     return mine
 
+
 def f(line):
     mine = g(line)
-    n = len(mine)-1
+    n = len(mine) - 1
     if n < 0:
         return 0
     return 2**n
@@ -30,7 +32,7 @@ for i, d in enumerate(data):
     nn = len(g(d))
     for j in range(nn):
         try:
-            cards[i+j+1] += cards[i]
+            cards[i + j + 1] += cards[i]
         except KeyError:
             pass
 
