@@ -1,4 +1,5 @@
 import re
+import time
 
 with open("inputs/day5.txt") as fh:
     data = fh.readlines()
@@ -31,8 +32,8 @@ def m(data, lstart, lstop, x):
         lines = data[lstart:]
     else:
         lines = data[lstart:lstop]
-    for l in lines:
-        dest, source, r = f(l)
+    for line in lines:
+        dest, source, r = f(line)
         smax = source + r - 1
         if (x >= source) and (x <= smax):
             return dest + (x - source)
@@ -44,8 +45,8 @@ def minv(data, lstart, lstop, y):
         lines = data[lstart:]
     else:
         lines = data[lstart:lstop]
-    for l in lines:
-        d, s, r = f(l)
+    for line in lines:
+        d, s, r = f(line)
         dmax = d + r - 1
         if (y >= d) and (y <= dmax):
             return s + (y - d)
@@ -58,17 +59,16 @@ for i, h in enumerate(headers):
     lstart = h + 1
     try:
         lstop = headers[i + 1] - 1
-    except:
+    except IndexError:
         lstop = None
     xvals = [m(data, lstart, lstop, x) for x in xvals]
 upper = min(xvals)
 print(upper, xvals.index(upper))
 
 print(headers[::-1])
-j = 11670588
-import time
-
 time.sleep(5)
+j = 0
+
 while True:
     if j % 100000:
         print(j, j / upper)
@@ -98,7 +98,7 @@ for i, h in enumerate(headers):
     lstart = h + 1
     try:
         lstop = headers[i + 1] - 1
-    except:
+    except IndexError:
         lstop = None
     xvals = [m(data, lstart, lstop, x) for x in xvals]
     print(i, xvals)

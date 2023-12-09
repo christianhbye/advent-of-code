@@ -14,8 +14,8 @@ def m(data, lstart, lstop, x):
         lines = data[lstart:]
     else:
         lines = data[lstart:lstop]
-    for l in lines:
-        dest, source, r = f(l)
+    for line in lines:
+        dest, source, r = f(line)
         smax = source + r - 1
         if (x >= source) and (x <= smax):
             return dest + (x - source)
@@ -29,13 +29,9 @@ for i, h in enumerate(headers):
     lstart = h + 1
     try:
         lstop = headers[i + 1] - 1
-    except:
+    except IndexError:
         lstop = None
     xvals = [m(data, lstart, lstop, x) for x in xvals]
 
 print(xvals.index(min(xvals)))
 print(min(xvals))
-
-
-bg = xvals.index(min(xvals))
-print(bg)  # even nr so beginning of a range

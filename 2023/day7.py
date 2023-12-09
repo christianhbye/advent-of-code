@@ -12,6 +12,7 @@ def f(line, m):
     hand = [m[h] for h in hand]
     return hand, int(b)
 
+
 def wild_cnt(hand):
     njs = hand.count(1)
     if njs == 5:
@@ -28,9 +29,9 @@ def wild_cnt(hand):
             mix = i
         c.append(cnt)
         i += cnt
-    newhand = huse + njs*[huse[mix]]
     c[mix] += njs
     return c
+
 
 def score(hand, wild=False):
     if wild and 1 in hand:
@@ -56,7 +57,9 @@ def score(hand, wild=False):
 
 
 def tb(hand):
-    return sum([h * 15**i for i, h in enumerate(hand[::-1])]) / 15 ** len(hand)
+    return sum([h * 15**i for i, h in enumerate(hand[::-1])]) / 15 ** len(
+        hand
+    )
 
 
 def winnings(m, pt2=False):
@@ -70,6 +73,7 @@ def winnings(m, pt2=False):
 
     bets_sorted = [b for _, b in sorted(zip(scores, bets))]
     return sum([b * (i + 1) for i, b in enumerate(bets_sorted)])
+
 
 # pt 1
 print(winnings(m))
